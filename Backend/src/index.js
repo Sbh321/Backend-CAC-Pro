@@ -1,12 +1,22 @@
 //require("dotenv").config();
 import dotenv from "dotenv";
 import connectDB from "./db/index.js";
+import { app } from "./app.js";
 
 dotenv.config({ path: "./env" });
 
-connectDB();
+//We used async method for database connecion code, an async method acts same as an promise where we have either response or reject so to handel them.
+connectDB()
+  .then(() => {
+    app.listen(process.env.PORT || 8000, () => {
+      console.log("Express id serving at: ", process.env.PORT);
+    });
+  })
+  .catch((error) => {
+    console.log("MONGO conn fail ", error);
+  });
 
-//Another approach by creating an ifie to connect database
+//Another approach by creating an iife to connect database
 /*
 import express from "express";
 const app = express();
