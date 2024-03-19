@@ -14,11 +14,16 @@ app.use(
 
 //This middleware configures express to parse the incoming requests with JSON payloads and sets a limit for the JSON data
 app.use(express.json({ limit: "16kb" }));
-
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
-
 app.use(express.static("public"));
-
 app.use(cookieParser());
+
+//Routes import
+
+import userRouter from "./routes/user.routes.js";
+
+//route declaration
+
+app.use("/api/v1/users", userRouter);
 
 export { app };
