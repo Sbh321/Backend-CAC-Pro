@@ -1,0 +1,1 @@
+In an Express backend, controllers are functions that handle the logic for different routes or endpoints of your application. They are responsible for processing incoming requests, interacting with the database if necessary, and sending back an appropriate response to the client.
